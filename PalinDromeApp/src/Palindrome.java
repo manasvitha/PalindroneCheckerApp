@@ -1,24 +1,23 @@
 public class Palindrome {
    import java.util.Scanner;
-    public static boolean isPalindrome(String input) {
-            // Loop only till half of the string length
-            for (int i = 0; i < input.length() / 2; i++) {
-                if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                    return false;
-                }
-            }
-            return true;
-        }
+   public static void main(String[] args) {
 
-        public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
-
-            System.out.print("Input text: ");
+            System.out.print("Enter a string: ");
             String input = scanner.nextLine();
 
-            boolean result = isPalindrome(input);
+            String reversed = "";
 
-            System.out.println("Is it a Palindrome? : " + result);
+            // Iterate from the last character to the first.
+            for (int i = input.length() - 1; i >= 0; i--) {
+                reversed += input.charAt(i);
+            }
+
+            if (input.equals(reversed)) {
+                System.out.println("The string is a palindrome.");
+            } else {
+                System.out.println("The string is not a palindrome.");
+            }
 
             scanner.close();
         }
