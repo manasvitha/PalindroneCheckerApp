@@ -1,39 +1,27 @@
 public class Palindrome {
-   import java.util.Scanner;
-   public static void main(String[] args) {
-            // Declare and initialize the input string.
-            String input = "radar";
+   import java.util.Stack
+    public static void main(String[] args) {
 
-            // Convert the string into a character array.
-            char[] chars = input.toCharArray();
+        String input = "noon";
 
-            // Initialize pointer at the beginning.
-            int start = 0;
+        Stack<Character> stack = new Stack<>();
 
-            // Initialize pointer at the end.
-            int end = chars.length - 1;
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
-            // Assume palindrome initially.
-            boolean isPalindrome = true;
+        String reversed = "";
 
-            // Continue comparison until pointers cross.
-            while (start < end) {
-                // Compare characters at the current pointers
-                if (chars[start] != chars[end]) {
-                    isPalindrome = false;
-                    break; // Exit the loop if a mismatch is found
-                }
+        while (!stack.isEmpty()) {
+            reversed += stack.pop();
+        }
 
-                // Move pointers towards the middle
-                start++;
-                end--;
-            }
-
-            // Print the final output
-            System.out.println("Input : " + input);
-            System.out.println("Is Palindrome? : " + isPalindrome);
+        if (input.equals(reversed)) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is NOT a Palindrome.");
         }
     }
-
+}
 
 
