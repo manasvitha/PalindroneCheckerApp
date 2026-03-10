@@ -1,27 +1,24 @@
 public class Palindrome {
-  import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+  import java.util.ArrayDeque;
+import java.util.Deque;
 
 
         public static void main(String[] args) {
-            String input = "civic";
+            String input = "refer";
 
-            Queue<Character> queue = new LinkedList<>();
-            Stack<Character> stack = new Stack<>();
+            Deque<Character> deque = new ArrayDeque<>();
 
             for (char c : input.toCharArray()) {
-                queue.add(c);
-                stack.push(c);
+                deque.add(c);
             }
 
             boolean isPalindrome = true;
 
-            while (!queue.isEmpty()) {
-                char fromQueue = queue.remove();
-                char fromStack = stack.pop();
+            while (deque.size() > 1) {
+                char fromFront = deque.removeFirst();
+                char fromBack = deque.removeLast();
 
-                if (fromQueue != fromStack) {
+                if (fromFront != fromBack) {
                     isPalindrome = false;
                     break;
                 }
@@ -33,5 +30,5 @@ import java.util.Stack;
                 System.out.println(input + " is not a palindrome.");
             }
         }
-
     }
+
