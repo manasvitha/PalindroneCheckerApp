@@ -1,27 +1,37 @@
 public class Palindrome {
-   import java.util.Stack
-    public static void main(String[] args) {
+  import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
-        String input = "noon";
 
-        Stack<Character> stack = new Stack<>();
+        public static void main(String[] args) {
+            String input = "civic";
 
-        for (char c : input.toCharArray()) {
-            stack.push(c);
+            Queue<Character> queue = new LinkedList<>();
+            Stack<Character> stack = new Stack<>();
+
+            for (char c : input.toCharArray()) {
+                queue.add(c);
+                stack.push(c);
+            }
+
+            boolean isPalindrome = true;
+
+            while (!queue.isEmpty()) {
+                char fromQueue = queue.remove();
+                char fromStack = stack.pop();
+
+                if (fromQueue != fromStack) {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+
+            if (isPalindrome) {
+                System.out.println(input + " is a palindrome.");
+            } else {
+                System.out.println(input + " is not a palindrome.");
+            }
         }
 
-        String reversed = "";
-
-        while (!stack.isEmpty()) {
-            reversed += stack.pop();
-        }
-
-        if (input.equals(reversed)) {
-            System.out.println(input + " is a Palindrome.");
-        } else {
-            System.out.println(input + " is NOT a Palindrome.");
-        }
     }
-}
-
-
