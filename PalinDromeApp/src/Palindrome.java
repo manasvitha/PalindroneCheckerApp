@@ -10,12 +10,19 @@ import java.util.Stack;
 
             PalindromeStrategy strategy = new StackStrategy();
 
-            if (strategy.check(input)) {
+            long startTime = System.nanoTime();
+            boolean result = strategy.check(input);
+            long endTime = System.nanoTime();
+
+            long duration = endTime - startTime;
+
+            if (result) {
                 System.out.println("\"" + input + "\" is a palindrome!");
             } else {
                 System.out.println("\"" + input + "\" is NOT a palindrome.");
             }
 
+            System.out.println("Execution time: " + duration + " nanoseconds");
             scanner.close();
         }
     }
